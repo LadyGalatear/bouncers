@@ -20,6 +20,12 @@ static constexpr bn::fixed BASE_SPEED = 2;
 // Maximum number of bouncers on screen at once
 static constexpr int MAX_BOUNCERS = 20;
 
+class Bouncer {
+    public:
+        bn::sprite_ptr sprite = bn::sprite_items::dot.create_sprite();
+        bn::fixed x_speed;
+};
+
 bn::fixed average_x(bn::vector<bn::sprite_ptr, MAX_BOUNCERS> &sprites) {
     // Add all x positions together
     bn::fixed x_sum = 0;
@@ -59,6 +65,8 @@ int main()
     // Items with the same index correspond to each other
     bn::vector<bn::sprite_ptr, MAX_BOUNCERS> sprites = {};
     bn::vector<bn::fixed, MAX_BOUNCERS> x_speeds = {};
+
+    Bouncer bouncer = Bouncer();
 
     while (true)
     {
