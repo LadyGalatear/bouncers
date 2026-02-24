@@ -1,4 +1,9 @@
-# Bouncers
-An exercise to learn about functions and classes.
+# Bouncers: Metroid Edition
 
-Please find instructions in [instructions.md](instructions.md).
+<p align = "center">
+    <img src = "metroids.gif" alt = "Bouncing Metroids">
+    <br>
+    <em>Enjoy watching these Metroids!</em>
+</p>
+
+Play at: https://ladygalatear.github.io/bouncers
