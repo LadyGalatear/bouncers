@@ -50,30 +50,26 @@ class Bouncer {
         }
 };
 
-/*
-bn::fixed average_x(MAX_BOUNCERS>& bouncers) {
+bn::fixed average_x(bn::vector<Bouncer, MAX_BOUNCERS>& bouncers) {
     // Add all x positions together
     bn::fixed x_sum = 0;
-    for (bn::sprite_ptr sprite : sprites)
-    {
-        x_sum += sprite.x();
+    for (const Bouncer& bouncer : bouncers) {
+        x_sum += bouncer.sprite.x();
     }
 
     bn::fixed x_average = x_sum;
 
     // Only divide if we have 1 or more
     // Prevents division by 0
-    if (sprites.size() > 0)
+    if (bouncers.size() > 0)
     {
-        x_average /= sprites.size();
+        x_average /= bouncers.size();
     }
 
     return x_average;
 }
-*/
 
-void add_bouncer(bn::vector<Bouncer, MAX_BOUNCERS>& bouncers)
-{
+void add_bouncer(bn::vector<Bouncer, MAX_BOUNCERS>& bouncers) {
     // Only add if we're below the maximum
     if (bouncers.size() < bouncers.max_size())
     {
@@ -81,24 +77,20 @@ void add_bouncer(bn::vector<Bouncer, MAX_BOUNCERS>& bouncers)
     }
 }
 
-int main()
-{
+int main() {
     bn::core::init();
 
     bn::vector<Bouncer, MAX_BOUNCERS> bouncers = {};
 
-    while (true)
-    {
+    while (true) {
         // if A is pressed add a new bouncer
-        if (bn::keypad::a_pressed())
-        {
+        if (bn::keypad::a_pressed()) {
             add_bouncer(bouncers);
         }
 
         // if B is pressed print the average to the console
-        if (bn::keypad::b_pressed())
-        {
-            // BN_LOG("Average x: ", average_x(bouncers));
+        if (bn::keypad::b_pressed()) {
+            BN_LOG("Average x: ", average_x(bouncers));
         }
 
         for (Bouncer& bouncer : bouncers) {
